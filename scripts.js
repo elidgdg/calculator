@@ -18,16 +18,40 @@ function operate(operator, x, y) {
     return operator(x, y);
 }
 
-let num1, num2, operator;
-
-const displayDiv = document.getElementById("display");
-
-let displayValue = "";
-
 function updateDisplay(id) {
+    if (operatorClicked) {
+        clearDisplay();
+        operatorClicked = false;
+    }
     displayValue += id ;
     displayDiv.innerHTML = displayValue;
 }
+
+function operatorClick(id) {
+    operator = id;
+    num1 = displayValue;
+    operatorClicked = true;
+}
+
+function clearDisplay() {
+    displayDiv.innerHTML = "0";
+    displayValue = "";
+}
+
+function displayAnswer() {
+    num2 = displayValue;
+    answer = operate(window[operator], parseInt(num1), parseInt(num2));
+    clearDisplay();
+    updateDisplay(answer);
+}
+
+let num1, num2, operator, operatorClicked;
+
+const displayDiv = document.querySelector("#display");
+
+let displayValue = "";
+
+
 
 let numBtns = document.querySelectorAll(".btn.num");
 numBtns.forEach(btn => {
@@ -36,16 +60,6 @@ numBtns.forEach(btn => {
     });
 });
 
-function operatorClick(id) {
-    operator = id;
-    num1 = displayValue;
-    clearDisplay();
-}
-
-function clearDisplay() {
-    displayDiv.innerHTML = "0";
-    displayValue = "";
-}
 
 let operationBtns = document.querySelectorAll(".btn.operation");
 operationBtns.forEach(btn => {
@@ -53,3 +67,9 @@ operationBtns.forEach(btn => {
         operatorClick(this.id);
     });
 });
+
+let equalsBtn = document.querySelector(".btn.equals");
+equalsBtn.addEventListener('click', function () {
+    displayAnswer();
+    console.log('e');
+})
