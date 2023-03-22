@@ -1,0 +1,31 @@
+
+.calculator {
+    width: 200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color: red;
+    padding: 10px;
+}
+
+.btn-row {
+    display: flex;
+    gap: 5px;
+}
+
+button {
+    flex: 1 1 0;
+    aspect-ratio: 1 / 1;
+}
+
+#display {
+    font-size: 40px;
+    padding: 0px 0px 10px 0px;
+    font-family: digital;
+}
+
+@font-face {
+    font-family: digital;
+    src: url(digital-7.ttf);
+}
