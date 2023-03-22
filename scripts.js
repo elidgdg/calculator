@@ -34,6 +34,7 @@ function operatorClick(id) {
         answer = operate(window[operator], parseInt(num1), parseInt(displayValue));
         setDisplay(answer);
         num1 = answer;
+        operator = id;
     } else {
         operator = id;
         num1 = displayValue;
