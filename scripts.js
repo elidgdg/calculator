@@ -18,19 +18,28 @@ function operate(operator, x, y) {
     return operator(x, y);
 }
 
-function updateDisplay(id) {
-    if (operatorClicked) {
+function numBtnClick(id) {
+    if (equalsClicked) {
         clearDisplay();
         operatorClicked = false;
+    } else if (operatorClicked) {
+        clearDisplay();
     }
     displayValue += id ;
     displayDiv.innerHTML = displayValue;
 }
 
 function operatorClick(id) {
-    operator = id;
-    num1 = displayValue;
-    operatorClicked = true;
+    if (operatorClicked) {
+        answer = operate(window[operator], parseInt(num1), parseInt(displayValue));
+        setDisplay(answer);
+        num1 = answer;
+    } else {
+        operator = id;
+        num1 = displayValue;
+        operatorClicked = true;
+    }
+
 }
 
 function clearDisplay() {
@@ -38,14 +47,20 @@ function clearDisplay() {
     displayValue = "";
 }
 
-function displayAnswer() {
-    num2 = displayValue;
-    answer = operate(window[operator], parseInt(num1), parseInt(num2));
-    clearDisplay();
-    updateDisplay(answer);
+function setDisplay(displayText) {
+    displayValue = displayText;
+    displayDiv.innerHTML = displayValue;
 }
 
-let num1, num2, operator, operatorClicked;
+function equals() {
+    // num2 = displayValue;
+    answer = operate(window[operator], parseInt(num1), parseInt(displayValue));
+    setDisplay(answer);
+    operatorClicked = false;
+    equalsClicked = true;
+}
+
+let num1, num2, operator, operatorClicked, equalsClicked;
 
 const displayDiv = document.querySelector("#display");
 
@@ -56,7 +71,7 @@ let displayValue = "";
 let numBtns = document.querySelectorAll(".btn.num");
 numBtns.forEach(btn => {
     btn.addEventListener('click', function () {
-        updateDisplay(this.id);
+        numBtnClick(this.id);
     });
 });
 
@@ -70,6 +85,5 @@ operationBtns.forEach(btn => {
 
 let equalsBtn = document.querySelector(".btn.equals");
 equalsBtn.addEventListener('click', function () {
-    displayAnswer();
-    console.log('e');
+    equals();
 })
