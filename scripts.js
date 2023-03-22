@@ -62,29 +62,30 @@ function equals() {
 }
 
 let num1, num2, operator, operatorClicked, equalsClicked;
-
 const displayDiv = document.querySelector("#display");
-
 let displayValue = "";
 
-
-
+// Button event listeners
 let numBtns = document.querySelectorAll(".btn.num");
 numBtns.forEach(btn => {
     btn.addEventListener('click', function () {
         numBtnClick(this.id);
     });
 });
-
-
 let operationBtns = document.querySelectorAll(".btn.operation");
 operationBtns.forEach(btn => {
     btn.addEventListener('click', function () {
         operatorClick(this.id);
     });
 });
-
 let equalsBtn = document.querySelector(".btn.equals");
-equalsBtn.addEventListener('click', function () {
+equalsBtn.addEventListener('click', function (){
     equals();
+})
+
+let clearBtn = document.querySelector(".btn.clear");
+clearBtn.addEventListener('click', function() {
+    clearDisplay();
+    num1 = 0;
+    num2 = 0;
 })
