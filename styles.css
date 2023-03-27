@@ -36,11 +36,13 @@ button:active {
 
 #display {
     font-size: 40px;
-    padding: 0px 0px 10px 0px;
+    padding: 10px 5px 20px 5px;
     font-family: digital;
     background-color: #c6ddb3;
     border: 2px solid #050505;
     border-radius: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 @font-face {
