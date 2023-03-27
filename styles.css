@@ -17,6 +17,8 @@
 }
 
 button {
+    font-size: large;
+    font-weight: bold;
     flex: 1 1 0;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
