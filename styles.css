@@ -7,6 +7,8 @@
     gap: 5px;
     background-color: #6d7077;
     padding: 10px;
+    border: 2px solid #050505;
+    border-radius: 10px;
 }
 
 .btn-row {
@@ -17,11 +19,19 @@
 button {
     flex: 1 1 0;
     aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    border: 2px solid #050505;
     background-color: #f5f5f5;
+}
+button:active {
+    background-color: #b5b8be;
 }
 
 .equals {
     background-color: #eb8e24;
+}
+.equals:active {
+    background-color: #b36c1c;
 }
 
 #display {
@@ -29,6 +39,8 @@ button {
     padding: 0px 0px 10px 0px;
     font-family: digital;
     background-color: #c6ddb3;
+    border: 2px solid #050505;
+    border-radius: 10px;
 }
 
 @font-face {

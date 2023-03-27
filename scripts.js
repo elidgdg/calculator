@@ -22,8 +22,10 @@ function numBtnClick(id) {
     if (equalsClicked) {
         clearDisplay();
         operatorClicked = false;
+        equalsClicked = false;
     } else if (operatorClicked) {
         clearDisplay();
+        operatorClicked = false;
     }
     displayValue += id ;
     displayDiv.innerHTML = displayValue;
